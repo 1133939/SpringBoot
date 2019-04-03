@@ -29,9 +29,6 @@ public class Dono implements Serializable{
 	@Column(name = "DN_NO")
 	private String nome;
 
-	@Column(name = "DN_SIT")
-	@Enumerated(EnumType.STRING)
-	private SituacaoEnum situacao;
 
 	@OneToMany(mappedBy = "dono")
 	private List<Cachorro> cachorros;
@@ -39,12 +36,15 @@ public class Dono implements Serializable{
 	public Dono() {
 		super();
 	}
+	public Dono(String nome) {
+		this.nome = nome;
+	}
 
-	public Dono(Long id, String nome, SituacaoEnum situacao) {
+	public Dono(Long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.situacao = situacao;
+
 	}
 
 	public Long getId() {
@@ -63,13 +63,6 @@ public class Dono implements Serializable{
 		this.nome = nome;
 	}
 
-	public SituacaoEnum getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(SituacaoEnum situacao) {
-		this.situacao = situacao;
-	}
 	
 	public List<Cachorro> getCachorros() {
 		return cachorros;

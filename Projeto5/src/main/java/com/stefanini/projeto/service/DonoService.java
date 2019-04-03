@@ -1,5 +1,6 @@
 package com.stefanini.projeto.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,12 @@ public class DonoService {
 	private DonoRepository repository;
 	
 	public List<Dono> findAll() throws TreinaException {
-		return (List<Dono>) repository.findAll();
+		List<Dono> donos = (List<Dono>)repository.findAll();
+		return donos;
+		}
+	
+	public void save(Dono dono){
+		repository.save(dono);
+	}
 	}
 
-}
